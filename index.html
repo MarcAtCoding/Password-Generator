@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" async></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Password Generator</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <section>
+          <h1>
+            Generate a <span class="h1-span">random <br />password </span>
+          </h1>
+          <p class="subtitle">Never use an insecure password again.</p>
+          <button>Generate passwords</button>
+        </section>
+        <section>
+            <div class="line1"></div>
+            <p class="sct-2-p1">Customize</p>
+            <form class="form" action="">
+                <input type="checkbox" id="numbers" />
+                <label for="numbers"> Numbers </label>
+                <input type="checkbox" id="symbols" value="" />
+                <label for="symbols"> Symbols </label>
+                <input type="checkbox" id="set-length" value="">   
+                <label for="input-line">Set length</label>
+                <input type="text" id="input-line" value="" />
+            </form>
+         </section>
+        </section>
+        <div class="line2"></div>
+        <section class="section-3">
+          <div class="box1">
+            <p class="password1"></p>
+          </div>
+          <div class="box2">
+            <p class="password2"></p>
+          </div>
+        </section>
+      </div>
+      <img src="assets/images/hero-img.svg" alt="hero-img" />
+    </div>
+  </body>
+</html>
