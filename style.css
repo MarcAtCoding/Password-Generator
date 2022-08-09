@@ -65,6 +65,7 @@ button {
     line-height: 40px;
     letter-spacing: -0.025em;
     color: #FFFFFF;
+    padding-bottom: 10px;
 }
 .section-3 {
     display: flex;
@@ -113,6 +114,7 @@ button {
     background-color: transparent;
     border: transparent;
     border-bottom: 2px solid #4adf8648;
+    margin-bottom: 13px;
 }
 #input-line:focus{
     outline-style: none;
@@ -127,7 +129,6 @@ button {
     line-height: 28px;
     color: #D5D4D8;
     display: flex;
-    justify-content: space-around;
 }
 input[type="checkbox"]{
     appearance: none;
@@ -151,4 +152,101 @@ input[type="checkbox"]:after{
 }
 input[type="checkbox"]:checked:after{
     display: block;
+}
+#copy {
+    visibility: hidden;
+    appearance: none;
+    position: absolute;
+}
+.formg {
+    display: flex;
+}
+label {
+    padding-left: 7px;
+    padding-right: 29px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+@media(max-width: 428px){
+    * {
+        overflow-x: hidden;
+    }
+    #copy {
+        visibility: visible;
+        position: static;
+    }
+    .hero-img {
+        width: 365px;
+        height: 279px;
+        display: flex;
+        justify-content: center;
+        margin-top: 5px;
+    }
+    .container {
+        display: block;
+        margin-left: 31px;
+        margin-right: 31px;
+        margin-top: 0px;
+    }
+    h1 {
+        font-size: 34px;
+    }
+    .subtitle {
+        font-size: 16px;
+    }
+    button {
+        font-size: 16px;
+        width: 195px;
+        height: 42px;
+    }
+    .form {
+        display: block;
+        padding-right: 10px;
+        margin-bottom: 10px;
+    }
+    .formg {
+        display: flex;
+    }
+    label {
+        padding-left: 20px;
+    }
+    #input-line {
+        margin-left: 14px;
+    }
+    #original {
+        visibility: hidden;
+        display: none;
+    }
+    .sct-2-p1 {
+        font-size: 20px;
+    }
+    label {
+        font-size: 15px;
+    }
+    input[type="checkbox"]{
+        appearance: none;
+        height: 16px;
+        width: 16px;
+    }
+    input[type="checkbox"]:after{
+        font-family: 'Font Awesome 5 Free';
+        content: "\f00c";
+        font-weight: 1000;
+        font-size: 8px;
+        color: #4ADF86;
+        display: none;
+    }
+    input {
+        margin-top: 5px;
+    }
+    #input-line{
+        margin-top: 1px;
+        margin-left: -10px;
+    }
+    .password1, .password2 {
+        font-size: 15px;
+    }
+    .box1, .box2{
+        margin-bottom: 30px;
+    }
 }
