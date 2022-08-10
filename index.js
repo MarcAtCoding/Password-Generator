@@ -2,43 +2,142 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
 let btnGenerate = document.querySelector('.btn-generate')
 let passwordOne = document.querySelector('.password1')
 let passwordTwo = document.querySelector('.password2')
+let numbersIsChecked = document.querySelector('#numbers')
+let symbolsIsChecked = document.querySelector('#symbols')
+let setLengthIsChecked = document.querySelector('#set-length')
+let setLengthIsFilled = document.querySelector('#input-line')
+numbersIsChecked.checked = true
+symbolsIsChecked.checked = true
+setLengthIsChecked.checked = false
 
-function random() {
-    let random = Math.floor(Math.random()*characters.length)
-    return (characters[random])
+function random(array) {
+    let random = Math.floor(Math.random()*array.length)
+    return (array[random])
 }
 function lengthRandom(min, max) { 
     let randomLength = Math.floor(Math.random() * (max - min)) + min
     return randomLength
 }
+
+let inputLine = document.querySelector('#input-line').value 
+
+//
+function getNumArr() {
+    let numberList = characters.filter(value => typeof value === 'number')
+    return numberList
+}
+const newCharArr = getNumArr() //num arr
+
+function getIndexRange(start, end){
+    var sliced = characters.slice(start, end)
+    return sliced  
+}
+
+function getLetterArr(first, last) {
+    let letterArr = getIndexRange(characters.indexOf(first, 0), characters.indexOf(last, 0))
+    return letterArr
+}
+
+//
+
 btnGenerate.addEventListener("click", ()=> {
-    passwordOne.innerHTML = ""
-    for (let i = 0; i < lengthRandom(12, 15); i++) {
-        passwordOne.innerHTML += random()
+    if (numbersIsChecked.checked === true && symbolsIsChecked.checked === true && setLengthIsChecked.checked === false) { //default
+        passwordOne.innerHTML = ""
+        for (let i = 0; i < lengthRandom(12, 15); i++) {
+            passwordOne.innerHTML += random(characters)
+        }
+        passwordTwo.innerHTML = ""
+        for (let i = 0; i < lengthRandom(12, 15); i++) {
+            passwordTwo.innerHTML += random(characters)
+        }
+    } 
+    else if (setLengthIsChecked.checked === true && inputLine.value != "" && numbersIsChecked.checked === true && symbolsIsChecked.checked === true) {
+        let numInput = document.querySelector('#input-line').value
+        passwordOne.innerHTML = ""
+        for (let i = 0; i < lengthRandom(numInput, numInput); i++) {
+            passwordOne.innerHTML += random(characters)
+        }
+        passwordTwo.innerHTML = ""
+        for (let i = 0; i < lengthRandom(numInput, numInput); i++) {
+            passwordTwo.innerHTML += random(characters)
+        } 
+    }
+    else if (setLengthIsChecked.checked === true && inputLine.value != "" && numbersIsChecked.checked === true && symbolsIsChecked.checked === false) {
+        const newLetterArr = getLetterArr("A", 0)
+        const lettersAndNumbersArr = newCharArr.concat(newLetterArr)
+        let numInput = document.querySelector('#input-line').value
+        passwordOne.innerHTML = ""
+        for (let i = 0; i < numInput; i++) {
+            passwordOne.innerHTML += random(lettersAndNumbersArr)
+        }
+        passwordTwo.innerHTML = ""
+        for (let i = 0; i < numInput; i++) {
+            passwordTwo.innerHTML += random(lettersAndNumbersArr)
+        }         
+    }
+    else if (setLengthIsChecked.checked === true && inputLine.value != "" && numbersIsChecked.checked === false && symbolsIsChecked.checked === true){
+        const symbolArr = getLetterArr("~","/")
+        symbolArr.push("/")
+        const letterArr = getLetterArr("A", 0)
+        const newSymbolArr = symbolArr.concat(letterArr)
+        let numInput = document.querySelector('#input-line').value
+        passwordOne.innerHTML = ""
+        for (let i = 0; i < numInput; i++) {
+            passwordOne.innerHTML += random(newSymbolArr)
+        }
+        passwordTwo.innerHTML = ""
+        for (let i = 0; i < numInput; i++) {
+            passwordTwo.innerHTML += random(newSymbolArr)
+        }         
+    }
+    else if (numbersIsChecked.checked === true && symbolsIsChecked.checked === false && setLengthIsChecked.checked === false) { 
+        const letterArr = getLetterArr("A", 0)
+        const newArr = letterArr.concat(newCharArr)
+        passwordOne.innerHTML = ""
+        for (let i = 0; i < lengthRandom(12, 15); i++) {
+            passwordOne.innerHTML += random(newArr)
+        }
+        passwordTwo.innerHTML = ""
+        for (let i = 0; i < lengthRandom(12, 15); i++) {
+            passwordTwo.innerHTML += random(newArr)
+        }
+    } 
+    else if (numbersIsChecked.checked === false && symbolsIsChecked.checked === true && setLengthIsChecked.checked === false) { 
+        const letterArr = getLetterArr("A", 0)
+        const symbolArr = getLetterArr("~","/")
+        symbolArr.push("/")
+        const newArr = letterArr.concat(symbolArr)
+        passwordOne.innerHTML = ""
+        for (let i = 0; i < lengthRandom(12, 15); i++) {
+            passwordOne.innerHTML += random(newArr)
+        }
+        passwordTwo.innerHTML = ""
+        for (let i = 0; i < lengthRandom(12, 15); i++) {
+            passwordTwo.innerHTML += random(newArr)
+        }
+    }
+    else if (numbersIsChecked.checked === false && symbolsIsChecked.checked === false && setLengthIsChecked.checked === true){
+        let numInput = document.querySelector('#input-line').value
+        const letterArr = getLetterArr("A", 0)
+        passwordOne.innerHTML = ""
+        for (let i = 0; i < numInput; i++) {
+            passwordOne.innerHTML += random(letterArr)
+        }
+        passwordTwo.innerHTML = ""
+        for (let i = 0; i < numInput; i++) {
+            passwordTwo.innerHTML += random(letterArr)
+        }
+    }
+    else if (numbersIsChecked.checked === false && symbolsIsChecked.checked === false && setLengthIsChecked.checked === false){
+        let numInput = document.querySelector('#input-line').value
+        const letterArr = getLetterArr("A", 0)
+        passwordOne.innerHTML = ""
+        for (let i = 0; i < lengthRandom(12, 15); i++) {
+            passwordOne.innerHTML += random(letterArr)
+        }
+        passwordTwo.innerHTML = ""
+        for (let i = 0; i < lengthRandom(12, 15); i++) {
+            passwordTwo.innerHTML += random(letterArr)
+        }
     }
 })
-btnGenerate.addEventListener("click", ()=> {
-    passwordTwo.innerHTML = ""
-    for (let i = 0; i < lengthRandom(12, 15); i++) {
-        passwordTwo.innerHTML += random()
-    }
-})
-
-/*----------------Customize----------------------*/
-
-let numbersIsChecked = document.querySelector('#numbers')
-let symbolsIsChecked = document.querySelector('#symbols')
-let setLengthIsChecked = document.querySelector('#set-length')
-let setLengthIsFilled = document.querySelector('#input-line')
-
-numbersIsChecked.checked = true
-symbolsIsChecked.checked = true
-if (numbersIsChecked.checked === true ) {
-    const numberList = characters.filter(value => typeof value === 'number')
-    const numberRand = lengthRandom(numberList[0], numberList[9] + 1)
-    console.log(numberRand)
-}
-else if (numbersIsChecked.checked === false && symbolsIsChecked.checked === true) {
-    const symbolRand = characters[lengthRandom(characters.indexOf("~", 0), characters.indexOf("/", 0))]
-    console.log(symbolRand)
-}
