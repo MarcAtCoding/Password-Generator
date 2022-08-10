@@ -4,10 +4,16 @@
     margin: 0;
 }
 body {
-    background-color: #1F2937;
+    background: linear-gradient(180deg, #113567 0.2%, #1F2937 99.99%);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    width: 100%;
+    overflow-y: hidden;
     overflow-x: hidden;
 }
 .container {
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     margin-top: 86px;
@@ -169,6 +175,9 @@ label {
     margin-bottom: 10px;
 }
 @media(max-width: 428px){
+    body {
+        overflow-y: visible;
+    }
     * {
         overflow-x: hidden;
     }
@@ -253,18 +262,27 @@ label {
     }
 }
 @media(max-width: 360px){
+    body {
+        overflow-y: visible;
+    }
     .hero-img{
         width: 310px;
         height: 225px;
     }
 }
 @media(max-width: 375px){
+    body {
+        overflow-y: visible;
+    }
     .hero-img{
         width: 317px;
         height: 220px;
     }
 }
 @media(max-width: 390px){
+    body {
+        overflow-y: visible;
+    }
     .hero-img{
         width: 340px;
         height: 225px;
