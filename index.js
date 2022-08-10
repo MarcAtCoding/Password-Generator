@@ -144,8 +144,8 @@ btnGenerate.addEventListener("click", ()=> {
 let boxOne = document.querySelector('.box1')
 let boxTwo = document.querySelector('.box2')
 boxOne.addEventListener("click", ()=>{
-    navigator.clipboard.writeText(passwordOne.innerHTML);
+    navigator.clipboard.writeText(passwordOne.textContent);
 })
 boxTwo.addEventListener("click", ()=>{
-    navigator.clipboard.writeText(passwordTwo.innerHTML);
+    navigator.clipboard.writeText(passwordTwo.textContent);
 })
